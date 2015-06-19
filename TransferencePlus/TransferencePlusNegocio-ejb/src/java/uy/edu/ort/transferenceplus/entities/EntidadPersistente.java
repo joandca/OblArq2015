@@ -6,6 +6,7 @@
 package uy.edu.ort.transferenceplus.entities;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,17 +14,19 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
 
 /**
- *
- * @author Usuario
+ * @author Jose Carro
+ * @author Alvaro Gerolami
  */
 @MappedSuperclass
 public abstract class EntidadPersistente implements Serializable {
- 
+
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
-    
+
     @Version
+    @Column(name = "version")
     protected Long version;
 
     public Long getId() {
@@ -33,7 +36,7 @@ public abstract class EntidadPersistente implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     public Long getVersion() {
         return version;
     }
@@ -41,6 +44,5 @@ public abstract class EntidadPersistente implements Serializable {
     public void setVersion(Long version) {
         this.version = version;
     }
-    
-    
+
 }

@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Negocio;
+package uy.edu.ort.autenticador.beans;
 
 /**
  *
- * @author Dell_1
+ * @author Jose Carro
+ * @author Alvaro Gerolami
  */
-import Interfaces.IServicioLogin;
-import Interfaces.NombresHTTPHeader;
+import uy.edu.ort.autenticador.interfaces.IServicioLogin;
+import uy.edu.ort.autenticador.interfaces.NombresHTTPHeader;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.json.Json;
@@ -23,8 +24,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 
-
-@Stateless (name = "ServicioLogin", mappedName = "ejb/ServicioLogin")
+@Stateless(name = "ServicioLogin", mappedName = "ejb/ServicioLogin")
 
 public class ServicioLogin implements IServicioLogin {
 
@@ -36,12 +36,13 @@ public class ServicioLogin implements IServicioLogin {
     public Response login(
             @Context HttpHeaders httpHeaders,
             @FormParam("usuario") String usuario,
-            @FormParam("password") String password) {
+            @FormParam("password") String password,
+            @FormParam("tipoOperador") String tipoOperador) {
 
-       // Autenticador autenticador = Autenticador.getInstance();
+        // Autenticador autenticador = Autenticador.getInstance();
         String serviceKey = httpHeaders.getHeaderString(NombresHTTPHeader.SERVICE_KEY);
         try {
-            String authToken = autenticador.login(serviceKey, usuario, password);
+            String authToken = autenticador.login(serviceKey, usuario, password, tipoOperador);
 
             JsonObjectBuilder jsonObjBuilder = Json.createObjectBuilder();
             jsonObjBuilder.add("auth_token", authToken);

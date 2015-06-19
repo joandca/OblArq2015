@@ -9,30 +9,37 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 /**
- *
- * @author Dell_1
+ * @author Jose Carro
+ * @author Alvaro Gerolami
  */
 @MappedSuperclass
 public class Operador extends EntidadPersistente {
 
-    @Column(unique = true, nullable = false)
-    private Integer ci;
+    @Column(name = "ci", nullable = false)
+    private String ci;
 
-    @Column(nullable = false)
+    @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @Column(nullable = false)
+    @Column(name = "usuario", nullable = false)
+    private String usuario;
+
+    @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(nullable = false)
+    @Column(name = "minimoTransferencia", nullable = false)
     private int minimoTransferencia;
 
-    public Integer getCi() {
+    public String getCi() {
         return ci;
     }
 
     public String getNombre() {
         return nombre;
+    }
+
+    public String getUsuario() {
+        return usuario;
     }
 
     public String getPassword() {
@@ -43,12 +50,16 @@ public class Operador extends EntidadPersistente {
         return minimoTransferencia;
     }
 
-    public void setCi(Integer ci) {
+    public void setCi(String ci) {
         this.ci = ci;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public void setPassword(String password) {

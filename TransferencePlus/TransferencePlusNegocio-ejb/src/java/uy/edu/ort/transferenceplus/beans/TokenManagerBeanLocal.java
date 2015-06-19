@@ -20,6 +20,6 @@ public interface TokenManagerBeanLocal {
 
     public void borrarToken(String usuario, String token);
 
-    public boolean validarUsuario(String ci, String password);
+    public boolean validarUsuario(String usuario, String password, String tipoUsuario);
 
 }

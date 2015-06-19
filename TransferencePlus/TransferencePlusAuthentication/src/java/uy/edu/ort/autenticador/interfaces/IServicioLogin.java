@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaces;
+package uy.edu.ort.autenticador.interfaces;
 
 /**
  *
- * @author Dell_1
+ * @author Jose Carro
+ * @author Alvaro Gerolami
  */
 import java.io.Serializable;
 import javax.ejb.Local;
@@ -23,31 +24,32 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Local
-@Path( "loginResource" )
-public interface IServicioLogin extends Serializable{
+@Path("loginResource")
+public interface IServicioLogin extends Serializable {
 
     @POST
-    @Path( "login" )
-    @Consumes( MediaType.APPLICATION_FORM_URLENCODED )
-    @Produces( MediaType.APPLICATION_JSON )
+    @Path("login")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response login(
-        @Context HttpHeaders httpHeaders,
-        @FormParam( "usuario" ) String usuario,
-        @FormParam( "password" ) String password );
- 
+            @Context HttpHeaders httpHeaders,
+            @FormParam("usuario") String usuario,
+            @FormParam("password") String password,
+            @FormParam("tipoOperador") String tipoOperador);
+
     @GET
-    @Path( "demo-get-method" )
-    @Produces( MediaType.APPLICATION_JSON )
+    @Path("demo-get-method")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response demoGetMethod();
- 
+
     @POST
-    @Path( "demo-post-method" )
-    @Produces( MediaType.APPLICATION_JSON )
+    @Path("demo-post-method")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response demoPostMethod();
- 
+
     @POST
-    @Path( "logout" )
+    @Path("logout")
     public Response logout(
-        @Context HttpHeaders httpHeaders
-    ); 
+            @Context HttpHeaders httpHeaders
+    );
 }

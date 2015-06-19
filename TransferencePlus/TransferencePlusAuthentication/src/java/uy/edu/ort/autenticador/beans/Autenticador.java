@@ -3,12 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Negocio;
-
-/**
- *
- * @author Dell_1
- */
+package uy.edu.ort.autenticador.beans;
 
 import java.util.UUID;
 import javax.ejb.EJB;
@@ -18,9 +13,9 @@ import uy.edu.ort.transferenceplus.beans.TokenManagerBeanLocal;
 
 /**
  *
- * @author Dell_1
+ * @author Jose Carro
+ * @author Alvaro Gerolami
  */
-
 @Stateless
 public class Autenticador {
 
@@ -30,10 +25,8 @@ public class Autenticador {
     private TokenManagerBeanLocal tokenManagerBean;
 
     //private static Autenticador instance = null;
-
     public Autenticador() {
     }
-
 
     /**
      *
@@ -43,8 +36,8 @@ public class Autenticador {
      * @return
      * @throws LoginException
      */
-    public String login(String serviceKey, String ci, String password) throws LoginException {
-        if (this.validarUsuario(ci, password) && serviceKey.equals(SERVICE_KEY)) {
+    public String login(String serviceKey, String ci, String password, String tipoOperador) throws LoginException {
+        if (this.validarUsuario(ci, password, tipoOperador) && serviceKey.equals(SERVICE_KEY)) {
             String token = UUID.randomUUID().toString();
             tokenManagerBean.almacenarToken(ci, token);
             return token;
@@ -57,10 +50,11 @@ public class Autenticador {
      *
      * @param ci
      * @param password
+     * @param tipoUsuario
      * @return
      */
-    private boolean validarUsuario(String ci, String password) {
-        return tokenManagerBean.validarUsuario(ci, password);
+    private boolean validarUsuario(String ci, String password, String tipoUsuario) {
+        return tokenManagerBean.validarUsuario(ci, password, tipoUsuario);
     }
 
     /**

@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interceptores;
+package uy.edu.ort.autenticador.interceptores;
 
 /**
  *
  * @author Dell_1
  */
-import Interfaces.NombresHTTPHeader;  // Verificar como termina esta clase
+import uy.edu.ort.autenticador.interfaces.NombresHTTPHeader;  // Verificar como termina esta clase
 import java.io.IOException;
 import java.util.logging.Logger;
 import javax.ws.rs.container.ContainerRequestContext;

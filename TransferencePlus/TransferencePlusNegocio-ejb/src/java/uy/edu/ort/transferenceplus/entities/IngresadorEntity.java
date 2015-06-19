@@ -8,12 +8,15 @@ package uy.edu.ort.transferenceplus.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
- * @author Dell_1
+ * @author Jose Carro
+ * @author Alvaro Gerolami
  */
 @Entity
+@Table(name = "Ingresadores")
 public class IngresadorEntity extends Operador {
 
     private static final long serialVersionUID = 1L;
