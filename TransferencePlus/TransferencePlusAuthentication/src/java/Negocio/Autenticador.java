@@ -10,7 +10,6 @@ package Negocio;
  * @author Dell_1
  */
 
-
 import java.util.UUID;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -35,12 +34,6 @@ public class Autenticador {
     public Autenticador() {
     }
 
-//    public static Autenticador getInstance() {
-//        if (instance == null) {
-//            instance = new Autenticador();
-//        }
-//        return instance;
-//    }
 
     /**
      *
