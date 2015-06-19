@@ -39,7 +39,6 @@ public class ServicioLogin implements IServicioLogin {
             @FormParam("password") String password,
             @FormParam("tipoOperador") String tipoOperador) {
 
-        // Autenticador autenticador = Autenticador.getInstance();
         String serviceKey = httpHeaders.getHeaderString(NombresHTTPHeader.SERVICE_KEY);
         try {
             String authToken = autenticador.login(serviceKey, usuario, password, tipoOperador);
@@ -77,9 +76,7 @@ public class ServicioLogin implements IServicioLogin {
     }
 
     @Override
-    public Response logout(
-            @Context HttpHeaders httpHeaders) {
-        //Autenticador autenticador = Autenticador.getInstance();
+    public Response logout(@Context HttpHeaders httpHeaders) {
         String serviceKey = "service_key";
         String authToken = "auth_token";
         return getNoCacheResponseBuilder(Response.Status.NO_CONTENT).build();
